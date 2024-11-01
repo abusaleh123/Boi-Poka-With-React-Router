@@ -6,12 +6,32 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+
 import Base from './Components/Root/Base.jsx';
+import ErrorPage from './Components/ErrorPage/ErrorPage.jsx';
+import Home from './Components/Home/Home.jsx';
+import DashBoard from './Components/DashBoard/DashBoard.jsx';
+import BookDetail from './Components/BookDetail/BookDetail.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Base></Base>,
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
+      {
+        path: "/",
+        element: <Home></Home>
+      },
+      {
+        path: "books/:bookId",
+        element: <BookDetail></BookDetail>
+      },
+      {
+        path: '/dashboard',
+        element: <DashBoard></DashBoard>
+      }
+    ]
   },
 ]);
 
