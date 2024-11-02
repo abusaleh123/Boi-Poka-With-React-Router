@@ -7,6 +7,7 @@ import Book from '../Book/Book';
 
 const ListedBooks = () => {
     const [readList, setReadList] = useState([]);
+    
 const allBooks = useLoaderData();
 useEffect( () =>{
     const storedReadList = getStoredReadList();
@@ -14,7 +15,9 @@ useEffect( () =>{
     console.log(storedReadList, storedReadListInt, allBooks);
     const readBookList = allBooks.filter(book => storedReadListInt.includes(book.bookId) );
     setReadList(readBookList)
-}, [])
+}, []);
+
+
 
     return (
         <div>
@@ -32,7 +35,7 @@ useEffect( () =>{
       }
     </TabPanel>
     <TabPanel>
-      <h2>My Wish List</h2>
+      <h2>My Wish List </h2>
     </TabPanel>
   </Tabs>
         </div>

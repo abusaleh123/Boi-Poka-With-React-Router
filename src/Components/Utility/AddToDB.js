@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 
 
 const getStoredReadList = () => {
@@ -14,12 +15,13 @@ const getStoredReadList = () => {
 const addToStoredReadList = (id) => {
     const storedList = getStoredReadList();
     if(storedList.includes(id)){
-        console.log(id, "already exist in the read list");
+        toast.error('already Added')
     }
     else{
         storedList.push(id);
         const storedlistStr = JSON.stringify(storedList);
         localStorage.setItem('read-list',storedlistStr);
+        toast.success('This Book added to your read list');
     }
 }
 
